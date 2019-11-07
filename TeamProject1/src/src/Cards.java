@@ -1,17 +1,23 @@
 package src;
+import java.io.*;
+import java.util.*;
 
 public class Cards {
 		
 		//Attributes of a card
-		int egg;
 		String name;
+		int egg;
 		int cost;
 		char habitat;
 		String power;
 		
 		//Default constructor
 		Cards(){
-			this.name = "Birds";
+		this.name = "Birds";
+		this.egg = 2;
+		this.cost = 3;
+		this.habitat = 'w';
+		this.power = "Activate";
 		}
 		
 		//Constructor that initializes class variables
@@ -56,15 +62,62 @@ public class Cards {
 		 public String getPower() {
 			    return power;
 			  }
+		 
+		 public Cards[] makeCard(){
+			 //int e,String n,int c,char h,String p
+			 Cards first = new Cards(1,"Steller's Jay",3,'w',"Activate");
+			 Cards second = new Cards(2,"American White Pelican",4,'d',"Extra egg");
+			 Cards third = new Cards(3,"Eastern KingBird",6,'w',"Once between turns");
+			 Cards fourth = new Cards(4,"Mountain BlueBird",7,'d',"Play a second bird");
+			 Cards fifth = new Cards(5,"American Kestrel",8,'w',"Roll a dice");
+			 
+			 Cards[] A = new Cards[]{first,second,third,fourth,fifth};
+			 
+			 return A;
+		    }
+		 
+		 public Cards[] makeDeck() {
+			 int num = 0;
+			 int i = 0;
+			 Cards temp;
+			 Cards[] deck;
+			 Scanner n = new Scanner(System.in);
+			 Scanner sc;
+			 try {
+					 sc = new Scanner(new File("cardTextFile.txt"));
+			 }
+			 catch(Exception e) {
+				 System.out.print("Cant find file");
+			 }
+	
+			 System.out.print("How many cards do you want");
+		        num = n.nextInt();
+		        deck = new Cards[num];
+		  
+			 while(sc.hasNext() && i<num) {
+				 int eg = sc.nextInt();
+				 String nme = sc.next();
+				 int cst = sc.nextInt();
+				 //char hbtat = (char)s.();
+				 char hbtat = 'w';
+				 String pwr = sc.next();
+				 temp = new Cards(eg,nme,cst,hbtat,pwr);
+				 deck[i] = temp;
+				 i++;
+			 }
+			 sc.close(); 
+			 n.close();
+			 return deck;
+		 }
 		
 		//To string method that displays a card
 		public String toString(){
-		      return "Egg: "+ getEgg() + 
-		    		 "\nName: "+ getName() +
+		      return "Name: "+ getName() +
+		    		 "\nEgg: "+ getEgg() + 
 		    		 "\nCost: "+ getCost() +
 		    		 "\nHabitat: "+ getHabitat() +
-		    		 "\nName: "+ getPower()
-		    		  ;
+		    		 "\nName: "+ getPower() +"\n\n"
+		    		 ;
 		    }
 	}
 
