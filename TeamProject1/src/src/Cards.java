@@ -8,7 +8,7 @@ public class Cards {
 		String name;
 		int egg;
 		int cost;
-		char habitat;
+		String habitat;
 		String power;
 		
 		//Default constructor
@@ -16,12 +16,12 @@ public class Cards {
 		this.name = "Birds";
 		this.egg = 2;
 		this.cost = 3;
-		this.habitat = 'w';
+		this.habitat = "wetland";
 		this.power = "Activate";
 		}
 		
 		//Constructor that initializes class variables
-		Cards(int e,String n,int c,char h,String p ){
+		Cards(int e,String n,int c,String h,String p ){
 			this.egg = e;
 			this.name = n;
 			this.cost = c;
@@ -39,7 +39,7 @@ public class Cards {
 		 public void setCost(int c) {
 			    this.cost = c;
 			  }
-		 public void setHabitat(char h) {
+		 public void setHabitat(String h) {
 			    this.habitat = h;
 			  }
 		 public void setPower(String p) {
@@ -56,7 +56,7 @@ public class Cards {
 		 public int getCost() {
 			    return cost;
 			  }
-		 public char getHabitat() {
+		 public String getHabitat() {
 			    return habitat;
 			  }
 		 public String getPower() {
@@ -64,12 +64,12 @@ public class Cards {
 			  }
 		 
 		 public Cards[] makeCard(){
-			 //int e,String n,int c,char h,String p
-			 Cards first = new Cards(1,"Steller's Jay",3,'w',"Activate");
-			 Cards second = new Cards(2,"American White Pelican",4,'d',"Extra egg");
-			 Cards third = new Cards(3,"Eastern KingBird",6,'w',"Once between turns");
-			 Cards fourth = new Cards(4,"Mountain BlueBird",7,'d',"Play a second bird");
-			 Cards fifth = new Cards(5,"American Kestrel",8,'w',"Roll a dice");
+			 //int e,String n,int c,String h,String p
+			 Cards first = new Cards(1,"Steller's Jay",3,"wetland","Activate");
+			 Cards second = new Cards(2,"American White Pelican",4,"grassland","Extra egg");
+			 Cards third = new Cards(3,"Eastern KingBird",6,"wetland","Once between turns");
+			 Cards fourth = new Cards(4,"Mountain BlueBird",7,"forest","Play a second bird");
+			 Cards fifth = new Cards(5,"American Kestrel",8,"grassland","Roll a dice");
 			 
 			 Cards[] A = new Cards[]{first,second,third,fourth,fifth};
 			 
@@ -93,13 +93,12 @@ public class Cards {
 			 System.out.print("How many cards do you want");
 		        num = n.nextInt();
 		        deck = new Cards[num];
-		  
+		        
 			 while(sc.hasNext() && i<num) {
 				 int eg = sc.nextInt();
 				 String nme = sc.next();
 				 int cst = sc.nextInt();
-				 //char hbtat = (char)s.();
-				 char hbtat = 'w';
+				 String hbtat = sc.next();
 				 String pwr = sc.next();
 				 temp = new Cards(eg,nme,cst,hbtat,pwr);
 				 deck[i] = temp;
